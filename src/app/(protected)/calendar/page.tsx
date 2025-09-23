@@ -1,0 +1,12 @@
+"use client";
+import { useLocale } from "@/context/locale-context";
+
+export default function Calendar() {
+    const { t } = useLocale();
+    return (
+        <div>
+            <h1 className="text-2xl font-bold mb-4">{t("calendar.title")}</h1>
+            <p>{t("calendar.description")}</p>
+        </div>
+    );
+}
