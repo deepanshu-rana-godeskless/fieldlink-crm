@@ -1,6 +1,7 @@
 "use client";
 
 import React, { forwardRef, useRef } from "react";
+import { NumberTicker } from "@/components/ui/number-ticker";
 import { Highlighter } from "@/components/ui/highlighter";
 import { useRouter } from "next/navigation";
 import { useLocale } from "@/context/locale-context";
@@ -404,15 +405,21 @@ const MobileEcosystemSection = () => {
         {/* Quick Metrics Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12 max-w-2xl mx-auto">
           <div className="text-center">
-            <h3 className="text-3xl font-bold text-primary mb-2">40%</h3>
+            <h3 className="text-3xl font-bold text-primary mb-2">
+              <NumberTicker value={40} />%
+            </h3>
             <p className="text-muted-foreground">Faster Dispatches</p>
           </div>
           <div className="text-center">
-            <h3 className="text-3xl font-bold text-primary mb-2">99%</h3>
+            <h3 className="text-3xl font-bold text-primary mb-2">
+              <NumberTicker value={99} />%
+            </h3>
             <p className="text-muted-foreground">On-Time Visits</p>
           </div>
           <div className="text-center">
-            <h3 className="text-3xl font-bold text-primary mb-2">2x</h3>
+            <h3 className="text-3xl font-bold text-primary mb-2">
+              <NumberTicker value={2} />x
+            </h3>
             <p className="text-muted-foreground">Customer Retention</p>
           </div>
         </div>
@@ -477,7 +484,13 @@ export default function Welcome() {
             Introducing <AuroraText className="font-extrabold">FieldLink by GoDeskless</AuroraText>
           </span>
           <span className="text-lg font-medium text-muted-foreground mb-8">
-            Your modern CRM for field teams, powered by GoDeskless
+            <Highlighter action="underline" color="#2C2B83">
+              Your modern CRM{' '}
+            </Highlighter>
+            {' '}for field teams,{' '}
+            <Highlighter action="underline" color="#8EF822">
+              powered by GoDeskless
+            </Highlighter>
           </span>
         </div>
         <InteractiveHoverButton className="mt-2" onClick={() => router.push("/login")}>
