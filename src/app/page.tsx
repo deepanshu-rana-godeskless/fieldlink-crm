@@ -395,7 +395,7 @@ const MobileEcosystemSection = () => {
             />
           </div>
           {/* Overlay Label for Context */}
-          <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-primary/90 text-white px-4 py-2 rounded-full text-sm font-medium shadow-lg mt-4">
+          <div className="absolute -top-13 left-1/2 transform -translate-x-1/2 bg-primary/90 text-white px-4 py-2 rounded-full text-sm font-medium shadow-lg mb-4">
             <Smartphone className="w-4 h-4 inline mr-2" />
             TrackHelp Pro: Agent's Command Post
           </div>
@@ -422,8 +422,7 @@ const MobileEcosystemSection = () => {
           className="text-lg px-8 py-4" // Larger for emphasis
           onClick={() => router.push("/demo")} // Link to bundled demo/pricing
         >
-          Get the Full Stack: FieldLink + TrackHelp Pro
-          <ChevronRight className="ml-2 w-5 h-5" />
+          Explore FieldLink & TrackHelp Pro
         </InteractiveHoverButton>
       </div>
     </section>
@@ -496,6 +495,62 @@ export default function Welcome() {
       <div>
         <MobileEcosystemSection />
       </div>
+
+      {/* Magic UI Footer */}
+      <footer className="w-full bg-white border border-gray-200 rounded-2xl mt-16 mb-4">
+        <div className="w-full px-6 lg:px-16 py-12">
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 mb-10">
+            <h2 className="text-4xl font-bold mb-4 md:mb-0">Still have questions?</h2>
+            <div className="flex gap-4 flex-nowrap">
+              <InteractiveHoverButton className="px-8 py-4 text-lg font-semibold flex flex-row items-center gap-2 min-w-fit whitespace-nowrap">
+                <span className="whitespace-nowrap flex flex-row items-center gap-2">
+                  Let's Chat
+                </span>
+              </InteractiveHoverButton>
+              <button className="rounded-full border border-gray-300 text-neutral-900 px-8 py-4 text-lg font-semibold bg-white hover:bg-gray-50 transition min-w-fit whitespace-nowrap">
+                Request Demo
+              </button>
+            </div>
+          </div>
+          <hr className="my-8 border-dashed border-gray-200" />
+          <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-8">
+            <div className="flex items-center gap-4 mb-6 md:mb-0">
+              <img src="/icons/gd.svg" alt="Magic UI" className="w-12 h-12 rounded-full" />
+              <div>
+                <div className="text-xl font-bold">GoDeskless Inc.</div>
+                <div className="text-base text-gray-700">AI-Powered Field Service Management</div>
+                <div className="text-sm text-gray-400 mt-2">All rights reserved.</div>
+              </div>
+            </div>
+            <div className="grid grid-cols-3 gap-8 text-lg">
+              {/* Product Column */}
+              <div className="flex flex-col gap-3">
+                <a href="https://godeskless.com/product/" target="_blank" rel="noopener noreferrer" className="font-bold mb-2 hover:underline">Product</a>
+                <a href="https://godeskless.com/product/#smartagent" target="_blank" rel="noopener noreferrer" className="hover:underline">SmartAgent Console</a>
+                <a href="https://godeskless.com/product/#trackhelp" target="_blank" rel="noopener noreferrer" className="hover:underline">TrackHelp Pro App</a>
+                <a href="https://godeskless.com/product/#onecloud" target="_blank" rel="noopener noreferrer" className="hover:underline">GoDeskless OneCloud</a>
+                <a href="https://godeskless.com/product/#connector" target="_blank" rel="noopener noreferrer" className="hover:underline">CRM Connectors</a>
+                <a href="https://godeskless.com/pricing/" target="_blank" rel="noopener noreferrer" className="hover:underline">Pricing</a>
+                <a href="https://godeskless.com/lp/interactive-demo/" target="_blank" rel="noopener noreferrer" className="hover:underline">Interactive Demo</a>
+              </div>
+              {/* Roles Column */}
+              <div className="flex flex-col gap-3">
+                <a href="https://godeskless.com/roles/" target="_blank" rel="noopener noreferrer" className="font-bold mb-2 hover:underline">Roles</a>
+                <a href="https://godeskless.com/roles/#schedulers" target="_blank" rel="noopener noreferrer" className="hover:underline">Customer Service Agents & Schedulers</a>
+                <a href="https://godeskless.com/roles/#fieldtech" target="_blank" rel="noopener noreferrer" className="hover:underline">Field Technicians</a>
+                <a href="https://godeskless.com/roles/#teamleads" target="_blank" rel="noopener noreferrer" className="hover:underline">Team Leaders</a>
+              </div>
+              {/* About Us Column */}
+              <div className="flex flex-col gap-3">
+                <a href="https://godeskless.com/company/" target="_blank" rel="noopener noreferrer" className="font-bold mb-2 hover:underline">About Us</a>
+                <a href="https://godeskless.com/company/#our-team" target="_blank" rel="noopener noreferrer" className="hover:underline">Our Team</a>
+                <a href="https://godeskless.com/resource-center/" target="_blank" rel="noopener noreferrer" className="hover:underline">Resource Center</a>
+                <a href="https://godeskless.com/blog/" target="_blank" rel="noopener noreferrer" className="hover:underline">Blog</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
     </>
   );
 }
