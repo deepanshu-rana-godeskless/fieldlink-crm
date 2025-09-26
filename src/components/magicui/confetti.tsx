@@ -14,7 +14,7 @@ export interface ConfettiProps {
 }
 
 export const Confetti: React.FC<ConfettiProps> = ({
-  duration = 3000,
+  duration = 5000,
   colors = ["#a786ff", "#fd8bbc", "#eca184", "#f8deb1"],
   particleCount = 2,
   angle = 60,
