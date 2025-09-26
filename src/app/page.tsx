@@ -21,6 +21,8 @@ import { AnimatedBeam } from "@/components/ui/animated-beam";
 import { Calendar } from "@/components/ui/calendar";
 import { Globe } from "@/components/ui/globe"; // Import Globe component
 import { Iphone15Pro } from "@/components/ui/iphone-15-pro"; // New import for iPhone mockup
+import { PulsatingButton } from "@/components/magicui/pulsating-button";
+
 
 // --------------------------
 // Files Demo
@@ -275,7 +277,14 @@ const GlobalCoverageSection = () => {
     { id: 4, lat: -33.8688, lng: 151.2093, name: "Sydney, Australia", stat: "600 Agent Deployments" }, // Oceania
     { id: 5, lat: -23.5505, lng: -46.6333, name: "São Paulo, Brazil", stat: "700 Integrations Active" }, // South America
     { id: 6, lat: 35.6762, lng: 139.6503, name: "Tokyo, Japan", stat: "1,000+ Alerts Handled" }, // Asia
+    { id: 7, lat: 48.8566, lng: 2.3522, name: "Paris, France", stat: "500 Reports Generated" }, // Europe
+    { id: 8, lat: 55.7558, lng: 37.6173, name: "Moscow, Russia", stat: "350 Assets Monitored" }, // Eurasia
+    { id: 9, lat: 1.3521, lng: 103.8198, name: "Singapore", stat: "400+ Customers Onboarded" }, // Asia
+    { id: 10, lat: -1.2921, lng: 36.8219, name: "Nairobi, Kenya", stat: "275 Deployments Completed" }, // Africa
+    { id: 11, lat: 52.3676, lng: 4.9041, name: "Amsterdam, Netherlands", stat: "620 Workflows Automated" }, // Europe
+    { id: 12, lat: 25.276987, lng: 55.296249, name: "Dubai, UAE", stat: "800+ Service Requests Managed" }, // Middle East
   ];
+
 
   return (
     <section className="relative w-full py-16 bg-gradient-to-b from-background to-muted/50 overflow-hidden">
@@ -336,24 +345,30 @@ const GlobalCoverageSection = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
           <div>
-            <h3 className="text-3xl font-bold text-primary">10K+</h3>
+            <h3 className="text-3xl font-bold text-primary">
+              <NumberTicker value={10} />K+
+            </h3>
             <p className="text-muted-foreground">Tickets Globally</p>
           </div>
           <div>
-            <h3 className="text-3xl font-bold text-primary">500+</h3>
+            <h3 className="text-3xl font-bold text-primary">
+              <NumberTicker value={500} />+
+            </h3>
             <p className="text-muted-foreground">Agents Connected</p>
           </div>
           <div>
-            <h3 className="text-3xl font-bold text-primary">99%</h3>
+            <h3 className="text-3xl font-bold text-primary">
+              <NumberTicker value={99} />%
+            </h3>
             <p className="text-muted-foreground">On-Time Visits</p>
           </div>
         </div>
 
         <InteractiveHoverButton
           className="mt-2"
-          onClick={() => router.push("/features")}
+          onClick={() => window.open("https://godeskless.com/product/features/", "_blank")}
         >
-          Explore Global Features
+          Discover Our Products
         </InteractiveHoverButton>
       </div>
     </section>
@@ -427,9 +442,9 @@ const MobileEcosystemSection = () => {
         {/* CTA: Drive Action */}
         <InteractiveHoverButton
           className="text-lg px-8 py-4" // Larger for emphasis
-          onClick={() => router.push("/demo")} // Link to bundled demo/pricing
+          onClick={() => window.open("https://play.google.com/store/apps/details?id=com.godeskless.trackhelppro&hl=en_IN", "_blank")}
         >
-          Explore FieldLink & TrackHelp Pro
+          Explore TrackHelp Pro
         </InteractiveHoverButton>
       </div>
     </section>
@@ -515,26 +530,33 @@ export default function Welcome() {
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 mb-10">
             <h2 className="text-4xl font-bold mb-4 md:mb-0">Still have questions?</h2>
             <div className="flex gap-4 flex-nowrap">
-              <InteractiveHoverButton className="px-8 py-4 text-lg font-semibold flex flex-row items-center gap-2 min-w-fit whitespace-nowrap">
+              <InteractiveHoverButton
+                className="px-8 py-4 text-lg font-semibold flex flex-row items-center gap-2 min-w-fit whitespace-nowrap"
+                onClick={() => window.open("https://godeskless.com/", "_blank")}
+              >
                 <span className="whitespace-nowrap flex flex-row items-center gap-2">
                   Let's Chat
                 </span>
               </InteractiveHoverButton>
-              <button className="rounded-full border border-gray-300 text-neutral-900 px-8 py-4 text-lg font-semibold bg-white hover:bg-gray-50 transition min-w-fit whitespace-nowrap">
+              <PulsatingButton
+                className="px-8 py-4 text-lg font-semibold flex flex-row items-center gap-2 min-w-fit whitespace-nowrap"
+                pulseColor="30,134,255"
+                duration="1.5s"
+                onClick={() => window.open("https://godeskless.com/book-a-demo/", "_blank")}
+              >
                 Request Demo
-              </button>
+              </PulsatingButton>
             </div>
           </div>
-          <hr className="my-8 border-dashed border-gray-200" />
-          <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-8">
-            <div className="flex items-center gap-4 mb-6 md:mb-0">
-              <img src="/icons/gd.svg" alt="Magic UI" className="w-12 h-12 rounded-full" />
-              <div>
-                <div className="text-xl font-bold">GoDeskless Inc.</div>
-                <div className="text-base text-gray-700">AI-Powered Field Service Management</div>
-                <div className="text-sm text-gray-400 mt-2">All rights reserved.</div>
-              </div>
+          <div className="flex items-center gap-4 mb-6 md:mb-0">
+            <img src="/icons/gd.svg" alt="Magic UI" className="w-12 h-12 rounded-full" />
+            <div>
+              <div className="text-xl font-bold">GoDeskless Inc.</div>
+              <div className="text-base text-gray-700">AI-Powered Field Service Management</div>
+              <div className="text-sm text-gray-400 mt-2">All rights reserved.</div>
             </div>
+          </div>
+          <div className="flex w-full justify-end pr-2 lg:pr-8 xl:pr-16">
             <div className="grid grid-cols-3 gap-8 text-lg">
               {/* Product Column */}
               <div className="flex flex-col gap-3">
@@ -563,7 +585,7 @@ export default function Welcome() {
             </div>
           </div>
         </div>
-      </footer>
+      </footer >
     </>
   );
 }

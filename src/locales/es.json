@@ -41,5 +41,6 @@
     "breadcrumb.faq": "FAQ",
     "breadcrumb.reports": "Informes",
     "breadcrumb.login": "Iniciar sesión",
-    "breadcrumb.welcome": "Bienvenido"
+    "breadcrumb.welcome": "Bienvenido",
+    "sidebar.account": "Cuenta"
 }

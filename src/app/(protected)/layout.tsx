@@ -24,24 +24,20 @@ export default function ProtectedLayout({ children }: Readonly<{ children: React
     const ThemeProvider = require("@/components/ui/theme-provider").ThemeProvider;
     const LocaleProvider = require("@/context/locale-context").LocaleProvider;
     return (
-        <html lang="en">
-            <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground`}>
-                <LocaleProvider>
-                    <ThemeProvider>
-                        <SidebarProvider>
-                            <div className="flex h-screen w-screen">
-                                <AppSidebar />
-                                <div className="flex flex-col flex-1 h-full">
-                                    <Header />
-                                    <main className="flex-1 overflow-y-auto p-8 bg-background rounded-b-2xl shadow-sm">
-                                        {children}
-                                    </main>
-                                </div>
-                            </div>
-                        </SidebarProvider>
-                    </ThemeProvider>
-                </LocaleProvider>
-            </body>
-        </html>
+        <LocaleProvider>
+            <ThemeProvider>
+                <SidebarProvider>
+                    <div className="flex h-screen w-screen">
+                        <AppSidebar />
+                        <div className="flex flex-col flex-1 h-full">
+                            <Header />
+                            <main className="flex-1 overflow-y-auto p-8 bg-background rounded-b-2xl shadow-sm">
+                                {children}
+                            </main>
+                        </div>
+                    </div>
+                </SidebarProvider>
+            </ThemeProvider>
+        </LocaleProvider>
     );
 }
