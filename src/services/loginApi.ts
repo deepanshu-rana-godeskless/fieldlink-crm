@@ -1,27 +1,31 @@
+// services/authService.ts
+import api, { storage } from "./api";
+
 export interface LoginPayload {
-    username: string;
-    password: string;
-    source?: string;
+  username: string;
+  password: string;
+  source?: string;
 }
 
 export interface LoginResponse {
-    status: boolean;
-    data: any[];
-    error: { msg?: string; error_code?: number };
+  status: boolean;
+  data: any[];
+  error: { msg?: string; error_code?: number };
 }
 
 export async function login(payload: LoginPayload): Promise<LoginResponse> {
-    const res = await fetch("https://deskteamdev.godeskless.com/api/admin/login/v2/", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...payload, source: "ACCOUNTADMIN_APP" }),
-    });
+  const { data } = await api.post<LoginResponse>(
+    "/api/admin/login/v2/",
+    { ...payload, source: "ACCOUNTADMIN_APP" }
+  );
 
-    if (!res.ok) throw new Error("Network error");
+  if (!data.status) {
+    throw new Error(data.error?.msg || "Login failed");
+  }
 
-    const data: LoginResponse = await res.json();
-    if (!data.status) {
-        throw new Error(data.error?.msg || "Login failed");
-    }
-    return data;
+  // ✅ Store token in centralized storage
+  const token = data?.data?.[0]?.access_token;
+  if (token) storage.setToken(token);
+
+  return data;
 }
