@@ -19,7 +19,7 @@ import { Marquee } from "@/components/ui/marquee";
 import { AnimatedList } from "@/components/ui/animated-list";
 import { AnimatedBeam } from "@/components/ui/animated-beam";
 import { Calendar } from "@/components/ui/calendar";
-import { Globe } from "@/components/ui/globe"; // Import Globe component
+import WorldMap from "@/components/ui/world-map";
 import { Iphone15Pro } from "@/components/ui/iphone-15-pro"; // New import for iPhone mockup
 import { PulsatingButton } from "@/components/magicui/pulsating-button";
 
@@ -267,24 +267,33 @@ function BentoDemo() {
 // Globe Section
 // --------------------------
 const GlobalCoverageSection = () => {
-  const router = useRouter();
-
-  // Sample data for pins (customize with real FSM stats)
-  const globalPins = [
-    { id: 1, lat: 40.7128, lng: -74.0060, name: "New York, USA", stat: "1,200 Tickets Resolved" }, // North America
-    { id: 2, lat: 51.5074, lng: -0.1278, name: "London, UK", stat: "850 Work Orders Scheduled" }, // Europe
-    { id: 3, lat: 19.0760, lng: 72.8777, name: "Mumbai, India", stat: "950 Field Visits" }, // Asia
-    { id: 4, lat: -33.8688, lng: 151.2093, name: "Sydney, Australia", stat: "600 Agent Deployments" }, // Oceania
-    { id: 5, lat: -23.5505, lng: -46.6333, name: "São Paulo, Brazil", stat: "700 Integrations Active" }, // South America
-    { id: 6, lat: 35.6762, lng: 139.6503, name: "Tokyo, Japan", stat: "1,000+ Alerts Handled" }, // Asia
-    { id: 7, lat: 48.8566, lng: 2.3522, name: "Paris, France", stat: "500 Reports Generated" }, // Europe
-    { id: 8, lat: 55.7558, lng: 37.6173, name: "Moscow, Russia", stat: "350 Assets Monitored" }, // Eurasia
-    { id: 9, lat: 1.3521, lng: 103.8198, name: "Singapore", stat: "400+ Customers Onboarded" }, // Asia
-    { id: 10, lat: -1.2921, lng: 36.8219, name: "Nairobi, Kenya", stat: "275 Deployments Completed" }, // Africa
-    { id: 11, lat: 52.3676, lng: 4.9041, name: "Amsterdam, Netherlands", stat: "620 Workflows Automated" }, // Europe
-    { id: 12, lat: 25.276987, lng: 55.296249, name: "Dubai, UAE", stat: "800+ Service Requests Managed" }, // Middle East
+  // WorldMap connections (lat/lng pairs)
+  const dots = [
+    {
+      start: { lat: 64.2008, lng: -149.4937 }, // Alaska (Fairbanks)
+      end: { lat: 34.0522, lng: -118.2437 }, // Los Angeles
+    },
+    {
+      start: { lat: 64.2008, lng: -149.4937 }, // Alaska (Fairbanks)
+      end: { lat: -15.7975, lng: -47.8919 }, // Brazil (Brasília)
+    },
+    {
+      start: { lat: -15.7975, lng: -47.8919 }, // Brazil (Brasília)
+      end: { lat: 38.7223, lng: -9.1393 }, // Lisbon
+    },
+    {
+      start: { lat: 51.5074, lng: -0.1278 }, // London
+      end: { lat: 28.6139, lng: 77.209 }, // New Delhi
+    },
+    {
+      start: { lat: 28.6139, lng: 77.209 }, // New Delhi
+      end: { lat: 43.1332, lng: 131.9113 }, // Vladivostok
+    },
+    {
+      start: { lat: 28.6139, lng: 77.209 }, // New Delhi
+      end: { lat: -1.2921, lng: 36.8219 }, // Nairobi
+    },
   ];
-
 
   return (
     <section className="relative w-full py-16 bg-gradient-to-b from-background to-muted/50 overflow-hidden">
@@ -301,46 +310,7 @@ const GlobalCoverageSection = () => {
         </p>
 
         <div className="relative mx-auto max-w-full h-[500px] md:h-[600px] mb-8">
-          <Globe
-            id="fieldlink-globe"
-            arcCount={10}
-            particleCount={120}
-            pinCount={globalPins.length}
-            globeColor="#1E86FF"
-            arcColor="#00C9A7"
-            particleColor="#FFB800"
-            pins={globalPins}
-            renderPin={(pin) => {
-              const [lat, lng] = pin.location;
-              return (
-                <div
-                  className="absolute pointer-events-auto"
-                  style={{
-                    transform: `translate(${lng * 2}px, ${-lat * 2}px)`,
-                    left: '50%',
-                    top: '50%',
-                    zIndex: 10,
-                  }}
-                >
-                  <div
-                    className="hidden group-hover:block absolute -top-12 left-1/2 -translate-x-1/2 bg-white rounded-lg p-2 shadow-lg text-sm border border-gray-200"
-                    role="tooltip"
-                    aria-label={`${pin.name}: ${pin.stat}`}
-                  >
-                    <strong>{pin.name}</strong>
-                    <br />
-                    {pin.stat}
-                  </div>
-                  <div className="w-2 h-2 bg-red-500 rounded-full group-hover:scale-125 transition-transform duration-200"></div>
-                </div>
-              );
-            }}
-            className={cn(
-              "w-full h-full",
-              "transition-all duration-300 hover:scale-105 group"
-            )}
-          />
-          <div className="pointer-events-none absolute inset-0 h-full bg-[radial-gradient(circle_at_50%_200%,rgba(0,0,0,0.2),rgba(255,255,255,0))]" />
+          <WorldMap dots={dots} lineColor="#0ea5e9" />
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">

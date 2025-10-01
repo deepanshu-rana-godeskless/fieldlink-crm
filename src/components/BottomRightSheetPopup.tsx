@@ -49,11 +49,11 @@ export function BottomRightSheetPopup() {
                             </button>
                         </SheetTrigger>
                     </TooltipTrigger>
-                    <TooltipContent sideOffset={8}>FISCO</TooltipContent>
+                    <TooltipContent sideOffset={8}>ISRA</TooltipContent>
                 </Tooltip>
                 <SheetContent side="right" className="w-[400px] sm:w-[540px] flex flex-col">
                     <SheetHeader>
-                        <SheetTitle>FISCO - Field Service CoPilot</SheetTitle>
+                        <SheetTitle>ISRA - Intelligent Support Resolution Assistant</SheetTitle>
                     </SheetHeader>
                     <div className="flex-1 overflow-y-auto px-4 py-2 bg-slate-50 rounded mb-4 border border-slate-100">
                         {messages.length === 0 && (

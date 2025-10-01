@@ -12,7 +12,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const token = req.headers.authorization || req.body.token || '';
 
     try {
-        const apiRes = await fetch('https://deskteamdev.godeskless.com/api/admin/analytics/dashboard/count/', {
+        const apiRes = await fetch('https://circledev.godeskless.com/api/admin/analytics/dashboard/count/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
