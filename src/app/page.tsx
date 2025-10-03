@@ -1,7 +1,6 @@
 "use client";
 
 import React, { forwardRef, useRef } from "react";
-import { CRMWelcomeBanner } from "@/components/ui/crm-welcome-banner";
 import { NumberTicker } from "@/components/ui/number-ticker";
 import { Highlighter } from "@/components/ui/highlighter";
 import { useRouter } from "next/navigation";
@@ -435,7 +434,6 @@ export default function Welcome() {
 
   return (
     <>
-      <CRMWelcomeBanner />
       <div className="relative flex flex-col items-center justify-center min-h-screen bg-background text-foreground overflow-hidden">
         <DotPattern className="[mask-image:radial-gradient(880px_circle_at_center,white,transparent)]" />
         <div className="fixed top-6 left-1/2 -translate-x-1/2 z-50">
