@@ -14,6 +14,14 @@ export function SiteHeader() {
                 {/* SidebarTrigger removed: not exported from sidebar. Add a sidebar open/close button here if needed. */}
                 <Separator orientation="vertical" className="mx-2 data-[orientation=vertical]:h-4 bg-slate-100" />
                 <Breadcrumb />
+                <div className="flex-1" />
+                <button
+                    className="ml-auto bg-slate-100 dark:bg-slate-800 rounded-full p-2 shadow hover:ring-2 hover:ring-blue-300 transition"
+                    aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
+                    onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+                >
+                    {theme === "dark" ? <Sun className="w-5 h-5 text-yellow-500" /> : <Moon className="w-5 h-5 text-slate-700" />}
+                </button>
             </div>
         </header>
     );

@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetDescription, SheetTrigger, SheetFooter, SheetClose } from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Tooltip, TooltipTrigger, TooltipContent } from "@/components/ui/tooltip";
@@ -21,10 +21,9 @@ export function BottomRightSheetPopup() {
         setMessages((prev) => [...prev, { role: "user", text: input }]);
         setInput("");
         const result = await askIsra(input);
-        if ('error' in result) {
+        if ("error" in result) {
             setError(result.error);
         } else {
-            // Handle both direct answer and array-wrapped answer
             let answer = result.answer;
             if (Array.isArray(result)) {
                 answer = result[0]?.answer || "";
@@ -51,17 +50,38 @@ export function BottomRightSheetPopup() {
                     </TooltipTrigger>
                     <TooltipContent sideOffset={8}>ISRA</TooltipContent>
                 </Tooltip>
+                {/* Removed the default close icon (no SheetClose) */}
                 <SheetContent side="right" className="w-[400px] sm:w-[540px] flex flex-col">
-                    <SheetHeader>
+                    {/* <SheetHeader>
                         <SheetTitle>ISRA - Intelligent Support Resolution Assistant</SheetTitle>
+                    </SheetHeader> */}
+                    <SheetHeader className="border-b pb-3">
+                        <h2 className="bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent font-bold text-xl">
+                            ISRA <p className="text-xs text-muted-foreground">Your AI-powered support assistant</p>
+                        </h2>
                     </SheetHeader>
+
                     <div className="flex-1 overflow-y-auto px-4 py-2 bg-slate-50 rounded mb-4 border border-slate-100">
                         {messages.length === 0 && (
-                            <div className="text-center text-gray-400 py-8">Start the conversation...</div>
+                            <div className="text-center text-gray-400 py-8 space-y-2">
+                                <div>Start the conversation...</div>
+                                <div className="text-xs text-gray-500 italic">
+                                    ISRA is in beta — responses may not be fully reliable. Please use with discretion.
+                                </div>
+                            </div>
                         )}
                         {messages.map((msg, idx) => (
-                            <div key={idx} className={`mb-4 flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}>
-                                <div className={`max-w-[80%] px-4 py-2 rounded-lg text-sm ${msg.role === "user" ? "bg-blue-100 text-blue-900" : "bg-white text-gray-900 border border-slate-200"}`}>
+                            <div
+                                key={idx}
+                                className={`mb-4 flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}
+                            >
+                                <div
+                                    className={`max-w-[80%] px-4 py-2 rounded-lg text-sm ${
+                                        msg.role === "user"
+                                            ? "bg-blue-100 text-blue-900"
+                                            : "bg-white text-gray-900 border border-slate-200"
+                                    }`}
+                                >
                                     {msg.text}
                                 </div>
                             </div>
@@ -73,9 +93,7 @@ export function BottomRightSheetPopup() {
                                 </div>
                             </div>
                         )}
-                        {error && (
-                            <div className="text-red-500 text-xs text-center mb-2">{error}</div>
-                        )}
+                        {error && <div className="text-red-500 text-xs text-center mb-2">{error}</div>}
                     </div>
                     <form onSubmit={sendMessage} className="flex gap-2 px-4 pb-4">
                         <input
@@ -83,7 +101,7 @@ export function BottomRightSheetPopup() {
                             className="flex-1 border border-slate-300 rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-300"
                             placeholder="Type your question..."
                             value={input}
-                            onChange={e => setInput(e.target.value)}
+                            onChange={(e) => setInput(e.target.value)}
                             disabled={loading}
                         />
                         <Button type="submit" disabled={loading || !input.trim()} variant="default">

@@ -39,11 +39,17 @@ export default function Login() {
         try {
             const response = await login({ username, password });
 
+            const userInfo = {
+                name: response.data[0].personal_info.full_name,
+                email: response.data[0].personal_info.email,
+                avatar: "/assets/Deepanshu.jpg" // You can make this dynamic if available in API
+            };
+            localStorage.setItem("user", JSON.stringify(userInfo));
             localStorage.setItem("access_token", response.data[0].access_token);
             localStorage.setItem("refresh_token", response.data[0].refresh_token);
 
             toast.success("Welcome to FieldLink!", {
-                description: `Hi ${response.data[0].personal_info.full_name}, you’ve successfully logged in! 🎉 Your workspace is ready.`,
+                description: `Hi ${userInfo.name}, you’ve successfully logged in! 🎉 Your workspace is ready.`,
                 duration: 4000,
             });
 

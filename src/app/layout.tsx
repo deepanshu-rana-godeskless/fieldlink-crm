@@ -31,11 +31,15 @@
 //     </html>
 //   );
 // }
+// app/layout.tsx
 
 import "./globals.css";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Toaster } from "sonner";
+
+import { ThemeProvider } from "@/components/ui/theme-provider";
+import { LoadingProvider } from "@/context/LoadingContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -52,15 +56,23 @@ export const metadata: Metadata = {
   description: "FSM CRM Dashboard",
 };
 
-export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  const ThemeProvider = require("@/components/ui/theme-provider").ThemeProvider;
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground`}>
-        <ThemeProvider>
-          {children}
-          <Toaster position="top-right" richColors />
-        </ThemeProvider>
+    <html lang="en" suppressHydrationWarning>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground`}
+      >
+        <LoadingProvider>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            {children}
+            <Toaster position="top-right" richColors />
+          </ThemeProvider>
+        </LoadingProvider>
       </body>
     </html>
   );

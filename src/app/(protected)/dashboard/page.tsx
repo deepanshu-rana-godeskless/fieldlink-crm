@@ -30,6 +30,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { DateTimeFormat } from "@/components/ui/DateTimeFormat";
+import { CRMWelcomeBanner } from "@/components/ui/crm-welcome-banner";
 
 type DashboardData = {
   till_date: {
@@ -226,75 +227,75 @@ function DrawerDemo({ loggedInToday }: { loggedInToday: number }) {
           ) : (
             <div className="overflow-x-auto p-2">
               <Table>
-                  <TableHeader>
-                    <TableRow>
-                      <TableHead className="text-center">No.</TableHead>
+                <TableHeader>
+                  <TableRow>
+                    <TableHead className="text-center">No.</TableHead>
 
-                      <TableHead
-                        className="text-center cursor-pointer"
-                        onClick={() =>
-                          setSort({
-                            key: "name",
-                            direction: sort.key === "name" && sort.direction === "asc" ? "desc" : "asc",
-                          })
-                        }
-                      >
-                        Name {sort.key === "name" ? (sort.direction === "asc" ? "↑" : "↓") : "⇅"}
-                      </TableHead>
+                    <TableHead
+                      className="text-center cursor-pointer"
+                      onClick={() =>
+                        setSort({
+                          key: "name",
+                          direction: sort.key === "name" && sort.direction === "asc" ? "desc" : "asc",
+                        })
+                      }
+                    >
+                      Name {sort.key === "name" ? (sort.direction === "asc" ? "↑" : "↓") : "⇅"}
+                    </TableHead>
 
-                      <TableHead className="text-center">Email</TableHead>
+                    <TableHead className="text-center">Email</TableHead>
 
-                      <TableHead
-                        className="text-center cursor-pointer"
-                        onClick={() =>
-                          setSort({
-                            key: "group",
-                            direction: sort.key === "group" && sort.direction === "asc" ? "desc" : "asc",
-                          })
-                        }
-                      >
-                        Group {sort.key === "group" ? (sort.direction === "asc" ? "↑" : "↓") : "⇅"}
-                      </TableHead>
+                    <TableHead
+                      className="text-center cursor-pointer"
+                      onClick={() =>
+                        setSort({
+                          key: "group",
+                          direction: sort.key === "group" && sort.direction === "asc" ? "desc" : "asc",
+                        })
+                      }
+                    >
+                      Group {sort.key === "group" ? (sort.direction === "asc" ? "↑" : "↓") : "⇅"}
+                    </TableHead>
 
-                      <TableHead
-                        className="text-center cursor-pointer"
-                        onClick={() =>
-                          setSort({
-                            key: "last_login",
-                            direction: sort.key === "last_login" && sort.direction === "asc" ? "desc" : "asc",
-                          })
-                        }
-                      >
-                        Last Login Date {sort.key === "last_login" ? (sort.direction === "asc" ? "↑" : "↓") : "⇅"}
-                      </TableHead>
+                    <TableHead
+                      className="text-center cursor-pointer"
+                      onClick={() =>
+                        setSort({
+                          key: "last_login",
+                          direction: sort.key === "last_login" && sort.direction === "asc" ? "desc" : "asc",
+                        })
+                      }
+                    >
+                      Last Login Date {sort.key === "last_login" ? (sort.direction === "asc" ? "↑" : "↓") : "⇅"}
+                    </TableHead>
 
-                      <TableHead
-                        className="text-center cursor-pointer"
-                        onClick={() =>
-                          setSort({
-                            key: "last_activity_time",
-                            direction: sort.key === "last_activity_time" && sort.direction === "asc" ? "desc" : "asc",
-                          })
-                        }
-                      >
-                        Last Activity Time {sort.key === "last_activity_time" ? (sort.direction === "asc" ? "↑" : "↓") : "⇅"}
-                      </TableHead>
+                    <TableHead
+                      className="text-center cursor-pointer"
+                      onClick={() =>
+                        setSort({
+                          key: "last_activity_time",
+                          direction: sort.key === "last_activity_time" && sort.direction === "asc" ? "desc" : "asc",
+                        })
+                      }
+                    >
+                      Last Activity Time {sort.key === "last_activity_time" ? (sort.direction === "asc" ? "↑" : "↓") : "⇅"}
+                    </TableHead>
 
-                      <TableHead
-                        className="text-center cursor-pointer"
-                        onClick={() =>
-                          setSort({
-                            key: "last_activity",
-                            direction: sort.key === "last_activity" && sort.direction === "asc" ? "desc" : "asc",
-                          })
-                        }
-                      >
-                        Last Activity {sort.key === "last_activity" ? (sort.direction === "asc" ? "↑" : "↓") : "⇅"}
-                      </TableHead>
+                    <TableHead
+                      className="text-center cursor-pointer"
+                      onClick={() =>
+                        setSort({
+                          key: "last_activity",
+                          direction: sort.key === "last_activity" && sort.direction === "asc" ? "desc" : "asc",
+                        })
+                      }
+                    >
+                      Last Activity {sort.key === "last_activity" ? (sort.direction === "asc" ? "↑" : "↓") : "⇅"}
+                    </TableHead>
 
-                      <TableHead className="text-center">Visit - Subject</TableHead>
-                    </TableRow>
-                  </TableHeader>
+                    <TableHead className="text-center">Visit - Subject</TableHead>
+                  </TableRow>
+                </TableHeader>
 
                 <TableBody>
                   {Array.isArray(sortedData) && sortedData.length > 0 ? (
@@ -424,6 +425,7 @@ export default function Dashboard() {
 
   return (
     <>
+      <CRMWelcomeBanner />
       <div className="flex flex-col gap-8">
         {/* First Row: Main Cards (shadcn) */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

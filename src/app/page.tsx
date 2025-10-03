@@ -1,6 +1,7 @@
 "use client";
 
 import React, { forwardRef, useRef } from "react";
+import { CRMWelcomeBanner } from "@/components/ui/crm-welcome-banner";
 import { NumberTicker } from "@/components/ui/number-ticker";
 import { Highlighter } from "@/components/ui/highlighter";
 import { useRouter } from "next/navigation";
@@ -306,7 +307,7 @@ const GlobalCoverageSection = () => {
           Empowering Global Field Teams
         </h2>
         <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-          FieldLink connects agents and customers worldwide—track tickets, schedule visits, and resolve issues seamlessly across borders.
+          FieldLink connects agents and dispatchers worldwide—track tickets, schedule visits, and resolve issues seamlessly across borders.
         </p>
 
         <div className="relative mx-auto max-w-full h-[500px] md:h-[600px] mb-8">
@@ -434,6 +435,7 @@ export default function Welcome() {
 
   return (
     <>
+      <CRMWelcomeBanner />
       <div className="relative flex flex-col items-center justify-center min-h-screen bg-background text-foreground overflow-hidden">
         <DotPattern className="[mask-image:radial-gradient(880px_circle_at_center,white,transparent)]" />
         <div className="fixed top-6 left-1/2 -translate-x-1/2 z-50">
